@@ -1,0 +1,26 @@
+version: '3.3'
+
+services:
+  mysql:
+    image: mysql:5.7
+    container_name: register-mysql
+    restart: always
+    ports:
+      - 11510:3306
+    environment:
+      TZ: Asia/Seoul
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: register
+      MYSQL_USER: register
+      MYSQL_PASSWORD: register
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+      - --skip-character-set-client-handshake
+    volumes:
+      - register-mysql:/var/lib/mysql
+
+volumes:
+  register-mysql:
+
+exp:
